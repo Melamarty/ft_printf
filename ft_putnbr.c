@@ -16,8 +16,8 @@ int	ft_putnbr(int n)
 	}
 	if (nb >= 10)
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		len += ft_putnbr(nb / 10);
+		len += ft_putnbr(nb % 10);
 	}
 	else
 	{

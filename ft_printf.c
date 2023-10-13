@@ -3,7 +3,7 @@
 
 size_t	check_var(const char format, va_list args)
 {
-	size_t	var_len;
+	int	var_len;
 
 	var_len = 0;
 	if (format == 'c')
@@ -11,7 +11,11 @@ size_t	check_var(const char format, va_list args)
 	else if (format == 's')
 		var_len += ft_putstr(va_arg(args, char *));
 	else if (format == 'p')
+	{
+		var_len += ft_putstr("0x");
 		var_len += ft_putadress(va_arg(args, unsigned long long));
+	}
+		
 	else if (format == 'd' || format == 'i')
 		var_len += ft_putnbr(va_arg(args, int));
 	else if (format == 'u')
@@ -27,7 +31,7 @@ size_t	check_var(const char format, va_list args)
 
 int	ft_isformat(const char c)
 {
-	if(c == 'c' || c =='s' || c == 'p' || c == 'd' || c == 'u' || c == 'x' || c == 'X' || c == '%')
+	if(c == 'c' || c =='s' || c == 'p' || c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
 		return (1);
 	return (0);
 }
@@ -48,6 +52,7 @@ int	ft_printf(const char *format, ...)
 			len += ft_putchar(format[i]);
 		i++;
 	}
+	va_end(args);
 	return (len);
 }
 

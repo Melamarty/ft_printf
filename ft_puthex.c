@@ -12,7 +12,7 @@ int	ft_putlowhex(unsigned int nb)
 	}
 	if(nb < 10)
 		len += ft_putchar(nb + '0');
-	if(nb < 16)
+	else if (nb < 16)
 		len += ft_putchar(nb + 'a' - 10);
 	return (len);
 }
@@ -29,7 +29,7 @@ int ft_putuphex(unsigned int nb)
 	}
 	if(nb < 10)
 		len += ft_putchar(nb + '0');
-	if(nb < 16)
+	else if(nb < 16)
 		len += ft_putchar(nb + 'A' - 10);
 	return (len);
 }
